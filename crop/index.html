@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agriculture Profit Optimizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-shell">
+        <header class="hero-panel">
+            <div>
+                <p class="eyebrow">Smart Agriculture</p>
+                <h1>Profit Optimization System</h1>
+                <p>Scan crops or upload grain images to detect type, quality, price and sell recommendations.</p>
+            </div>
+            <div class="hero-actions">
+                <button id="openUpload" class="btn btn-primary">Scan Crop Image</button>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <section class="card glass-card upload-card">
+                <h2>Upload or Capture Image</h2>
+                <div class="image-dropzone" id="dropzone">
+                    <img id="previewImage" alt="Crop preview" class="preview hidden" />
+                    <div class="upload-inner">
+                        <span>Drag & drop an image</span>
+                        <span>or</span>
+                        <label class="upload-label">
+                            <input id="imageInput" type="file" accept="image/*" capture="environment" hidden />
+                            Choose file / Camera
+                        </label>
+                    </div>
+                </div>
+                <div class="actions-row">
+                    <button id="analyzeButton" class="btn btn-secondary" disabled>Analyze Crop</button>
+                    <button id="retryBackend" class="btn btn-ghost">Retry Connection</button>
+                </div>
+                <p class="backend-note">Backend target: <strong>http://127.0.0.1:5000</strong></p>
+                <p class="backend-status" id="backendInfo">Checking backend connection…</p>
+                <div id="loader" class="loader hidden"></div>
+            </section>
+
+            <section class="card glass-card result-card hidden" id="resultCard">
+                <div class="result-header">
+                    <div>
+                        <p class="section-title">Analysis Result</p>
+                        <p id="recommendationText" class="recommendation"></p>
+                    </div>
+                    <div class="status-badge" id="qualityBadge">Quality</div>
+                </div>
+
+                <div class="result-grid">
+                    <div class="result-item">
+                        <span>Crop</span>
+                        <strong id="cropName">--</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Quality Level</span>
+                        <strong id="qualityLevel">--</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Confidence</span>
+                        <strong id="confidenceScore">--</strong>
+                    </div>
+                    <div class="result-item">
+                        <span>Price / quintal</span>
+                        <strong id="priceEstimate">--</strong>
+                    </div>
+                    <div class="result-item wide">
+                        <span>Market Trend</span>
+                        <strong id="marketTrend">--</strong>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
